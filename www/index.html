@@ -10,6 +10,8 @@
     <script src="js/app.js"></script>
     <!-- Needed for Cordova/PhoneGap (will be a 404 during development) -->
     <script src="cordova.js"></script>
+    <script src="angular.js"></script>
+    <script src="angular-touch.js"></script>
   </head>
   <body>
     <body>
@@ -41,6 +43,44 @@
               <ion-item ng-repeat="task in activeProject.tasks">
                 {{task.title}}
               </ion-item>
+
+                <!-- card list -->
+                <div class="list card">
+
+                  <div class="item item-avatar">
+                    <img src="avatar.jpg">
+                    <h2>Choose your car maker below</h2>
+                      <button class="button button-outline button-positive">
+                        i'm a button damn it!
+                      </button>
+                  </div>
+
+                  <div class="item item-image">
+                    <ion-slide-box on-slide-changed="slideHasChanged($index)">
+                      <ion-slide>
+                        <div class="box blue"><<img src="/img/mercedes.jpg"></div>
+                      </ion-slide>
+                      <ion-slide>
+                        <div class="box yellow"><img src="/img/subaruicon.jpg"></div>
+                      </ion-slide>
+                      <ion-slide>
+                        <div class="box pink"><img src="/img/volvo.jpg"></div>
+                      </ion-slide>
+                      <ion-slide>
+                        <div class="box pink"><a href="#"><img src="/img/wrx.png"></a></div>
+                      </ion-slide>
+                    </ion-slide-box>
+                    <!-- <a href="#"><img src="/img/mercedes.jpg"></a> -->
+                  </div>
+
+                  <a class="item item-icon-left assertive" href="#">
+                    <!-- <i class="icon ion-model-s"></i> -->
+                    <i class="icon ion-loading-d"></i>
+                    Start Modding!
+                  </a>
+
+                </div>
+                <!-- card list end -->
             </ion-list>
           </ion-content>
         </ion-side-menu-content>
@@ -100,7 +140,6 @@
             </ion-content>
 
           </div>
-
         </script>
 
 
