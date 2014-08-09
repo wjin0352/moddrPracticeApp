@@ -44,21 +44,22 @@
                 {{task.title}}
               </ion-item>
 
+
                 <!-- card list -->
                 <div class="list card">
 
                   <div class="item item-avatar">
-                    <img src="avatar.jpg">
-                    <h2>Choose your car maker below</h2>
-                      <button class="button button-outline button-positive">
+                    <!-- <img src="avatar.jpg"> -->
+                    <h2 id="mainTitle">Choose your car maker below</h2>
+                      <!--<button class="button button-outline button-positive">
                         i'm a button damn it!
-                      </button>
+                      </button> -->
                   </div>
 
                   <div class="item item-image">
                     <ion-slide-box on-slide-changed="slideHasChanged($index)">
                       <ion-slide>
-                        <div class="box blue"><<img src="/img/mercedes.jpg"></div>
+                        <div class="box blue"><img src="/img/mercedes.jpg"></div>
                       </ion-slide>
                       <ion-slide>
                         <div class="box yellow"><img src="/img/subaruicon.jpg"></div>
@@ -67,7 +68,10 @@
                         <div class="box pink"><img src="/img/volvo.jpg"></div>
                       </ion-slide>
                       <ion-slide>
-                        <div class="box pink"><a href="#"><img src="/img/wrx.png"></a></div>
+                        <div class="box pink"><a href="#"><img src="/img/HIGHWAYOSCARMIKE.gif"></a></div>
+                      </ion-slide>
+                      <ion-slide>
+                        <div class="box pink"><a href="#"><img src="/img/BMWGIF.gif"></a></div>
                       </ion-slide>
                     </ion-slide-box>
                     <!-- <a href="#"><img src="/img/mercedes.jpg"></a> -->
@@ -81,6 +85,7 @@
 
                 </div>
                 <!-- card list end -->
+
             </ion-list>
           </ion-content>
         </ion-side-menu-content>
