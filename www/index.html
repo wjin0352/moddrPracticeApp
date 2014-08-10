@@ -12,11 +12,12 @@
     <script src="cordova.js"></script>
     <script src="angular.js"></script>
     <script src="angular-touch.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
   </head>
   <body>
-    <body>
+    
       
-      </body>
       <ion-side-menus>
         <ion-side-menu-content>
         </ion-side-menu-content>
@@ -58,11 +59,13 @@
 
                   <div class="item item-image">
                     <ion-slide-box on-slide-changed="slideHasChanged($index)">
+                      
                       <ion-slide>
-                        <div class="box blue"><img src="/img/mercedes.jpg"></div>
+                        <div class="box blue"><a href="#"><img src="/img/mercedes.jpg"></a></div>
                       </ion-slide>
+
                       <ion-slide>
-                        <div class="box yellow"><img src="/img/subaruicon.jpg"></div>
+                        <div class="box yellow"><a href="#"><img src="/img/subaruicon.jpg"></a></div>
                           
                           <!-- if you want header, text, and footer after card 
                           <div class="card">
@@ -78,15 +81,21 @@
                           </div>-->
                           
                       </ion-slide>
+
                       <ion-slide>
-                        <div class="box pink"><img src="/img/volvo.jpg"></div>
+                        <div class="box pink"><a href="#"><img src="/img/volvo.jpg"></a></div>
                       </ion-slide>
+
                       <ion-slide>
-                        <div class="box pink"><a href="#"><img src="/img/HIGHWAYOSCARMIKE.gif"></a></div>
+                        <div class="box pink"><a href="#"><img src="/img/HIGHWAYOSCARMIKE.gif"></a>
+                        </div>
                       </ion-slide>
+
                       <ion-slide>
-                        <div class="box pink"><a href="#"><img src="/img/BMWGIF.gif"></a></div>
+                        <div class="box pink"><a href="#"><img src="/img/BMWGIF.gif"></a>
+                        </div>
                       </ion-slide>
+
                     </ion-slide-box>
                     <!-- <a href="#"><img src="/img/mercedes.jpg"></a> -->
                   </div>
@@ -162,8 +171,6 @@
           </div>
         </script>
 
-
-      </body>
     </body>
   </body>
 </html>
