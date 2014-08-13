@@ -18,14 +18,7 @@ angular.module('todo', ['ionic'])
   });
 })
 
-.controller('TodoCtrl', function($scope){
-  $scope.tasks = [
-    { title: 'SUBARU STAGE 1 mods' },
-    { title: 'BMW mods' },
-    { title: 'MERCEDES mods ' },
-    { title: 'FORD mods' }
-  ];
-}); 
+
 
 angular.module('todo', ['ionic'])
 
@@ -35,6 +28,8 @@ angular.module('todo', ['ionic'])
 
   // Create and load the Modal
   $ionicModal.fromTemplateUrl('new-task.html', function(modal) {
+
+    alert($scope.brandName)
     $scope.taskModal = modal;
   }, {
     scope: $scope,
@@ -54,6 +49,15 @@ angular.module('todo', ['ionic'])
   $scope.newTask = function() {
     $scope.taskModal.show();
   };
+  //on clickevent for maker, shows model list in new window
+  $scope.showModelInfo = function() {
+
+    $scope.taskModal.show();
+  };
+
+ // $scope.showMakerTitle = function() {
+   // $scope.taskModal.show();
+  //};
 
   // Close the new task modal
   $scope.closeNewTask = function() {
@@ -95,6 +99,11 @@ angular.module('todo', ['ionic'])
   }
 })
 
+
+
+
+
+
 .controller('TodoCtrl', function($scope, $timeout, $ionicModal, Projects, $ionicSideMenuDelegate) {
 
   // A utility function for creating a new project
@@ -131,6 +140,8 @@ angular.module('todo', ['ionic'])
   // Create our modal
   $ionicModal.fromTemplateUrl('new-task.html', function(modal) {
     $scope.taskModal = modal;
+
+
   }, {
     scope: $scope
   });
@@ -153,6 +164,17 @@ angular.module('todo', ['ionic'])
   $scope.newTask = function() {
     $scope.taskModal.show();
   };
+
+  //on clickevent for maker, shows model list in new window
+  $scope.showModelInfo = function(type) {
+   $scope.brandName= type;
+    $scope.taskModal.show();
+  };
+
+  //$scope.showMakerTitle = function(type) {
+   // $scope.brandModel= type;
+   // $scope.taskModal.show();
+  //};
 
   $scope.closeNewTask = function() {
     $scope.taskModal.hide();
@@ -177,5 +199,9 @@ angular.module('todo', ['ionic'])
       }
     }
   });
+
+
+
+
 
 });

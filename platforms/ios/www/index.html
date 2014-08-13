@@ -10,11 +10,14 @@
     <script src="js/app.js"></script>
     <!-- Needed for Cordova/PhoneGap (will be a 404 during development) -->
     <script src="cordova.js"></script>
+    <script src="angular.js"></script>
+    <script src="angular-touch.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
   </head>
   <body>
-    <body>
+    
       
-      </body>
       <ion-side-menus>
         <ion-side-menu-content>
         </ion-side-menu-content>
@@ -41,6 +44,133 @@
               <ion-item ng-repeat="task in activeProject.tasks">
                 {{task.title}}
               </ion-item>
+
+
+                <!-- card list -->
+                <div class="list card">
+
+                  <div class="item item-avatar">
+                    <!-- <img src="avatar.jpg"> -->
+                    <h2 id="main-title">Choose your car maker below</h2>
+                      <!--<button class="button button-outline button-positive">
+                        i'm a button damn it!
+                      </button> -->
+                  </div>
+
+                  <div class="item item-image" >
+                    <ion-slide-box on-slide-changed="slideHasChanged($index)">
+                      
+                      <ion-slide>
+                        <div class="box blue" ng-click="showModelInfo('Acura')"><img src="/img/acura.jpg"></div>
+                      </ion-slide>
+
+                      <ion-slide>
+                        <div class="box blue" ng-click="showModelInfo('Audi')"><img src="/img/audi.jpg"></div>
+                      </ion-slide>
+
+                      <ion-slide>
+                        <div class="box blue" ng-click="showModelInfo('BMW')"><img src="/img/bmwicon.gif"></div>
+                      </ion-slide>
+
+                      <ion-slide>
+                        <div class="box blue" ng-click="showModelInfo('Cadilac')"><img src="/img/caddy.jpg"></div>
+                      </ion-slide>
+
+                      <ion-slide>
+                        <div class="box blue" ng-click="showModelInfo('Chevrolet')"><img src="/img/chevy.jpg"></div>
+                      </ion-slide>
+
+                      <ion-slide>
+                        <div class="box blue" ng-click="showModelInfo('Dodge')"><img src="/img/dodge.gif"></div>
+                      </ion-slide>
+
+                      <ion-slide>
+                        <div class="box blue" ng-click="showModelInfo('Ford')"><img src="/img/ford.jpg"></div>
+                      </ion-slide>
+
+                      <ion-slide>
+                        <div class="box blue" ng-click="showModelInfo('Honda')"><img src="/img/honda.jpg"></div>
+                      </ion-slide>
+
+                      <ion-slide>
+                        <div class="box blue" ng-click="showModelInfo('Infiniti')"><img src="/img/infiniti.jpg"></div>
+                      </ion-slide>
+
+                      <ion-slide>
+                        <div class="box blue" ng-click="showModelInfo('Jeep')"><img src="/img/jeep.jpg"></div>
+                      </ion-slide>
+
+                      <ion-slide>
+                        <div class="box blue" ng-click="showModelInfo('Lexus')"><img src="/img/lexus.jpg"></div>
+                      </ion-slide>
+
+                      <ion-slide>
+                        <div class="box pink" ng-click="showModelInfo('Mercedes-Benz')"><img src="/img/mercedes.jpg">
+                        </div>
+                      </ion-slide>
+
+                      <ion-slide>
+                        <div class="box blue" ng-click="showModelInfo('Mitsubishi')"><img src="/img/mitsu.jpg"></div>
+                      </ion-slide>
+
+                      <ion-slide>
+                        <div class="box blue" ng-click="showModelInfo('Nissan')"><img src="/img/nissan.jpg"></div>
+                      </ion-slide>
+
+                      <ion-slide>
+                        <div class="box blue" ng-click="showModelInfo('Porsche')"><img src="/img/porsche.jpg"></div>
+                      </ion-slide>
+
+                      <ion-slide>
+                        <div class="box yellow" ng-click="showModelInfo('Subaru')"><img src="/img/subaruicon.jpg"></div>
+                          
+                          <!-- if you want header, text, and footer after card 
+                          <div class="card">
+                            <div class="item item-divider">
+                              title
+                            </div>
+                            <div class="item item-text-wrap">
+                              This is a basic Card with some text.
+                            </div>
+                            <div class="item item-divider">
+                              I'm a Footer in a Card!
+                            </div>
+                          </div>-->
+
+                      <!-- code below is redundant as hell any fixes? and how to make it slide smoothly, & how to make it return to the 1st after you slide the last icon picture-->
+
+                      </ion-slide>
+
+                      <ion-slide>
+                        <div class="box blue" ng-click="showModelInfo('Volkswagon')"><img src="/img/volkswagon.jpg"></div>
+                      </ion-slide>
+
+                      <ion-slide>
+                        <div class="box pink" ng-click="showModelInfo('Volvo')"><img src="/img/volvo.jpg"></div>
+                      </ion-slide>                    
+
+                      <ion-slide>
+                        <div class="box pink" ng-click="showModelInfo('')"><img src="/img/HIGHWAYOSCARMIKE.gif">
+                        </div>
+                      </ion-slide>                 
+
+                                                                              
+                      
+
+                    </ion-slide-box>
+                    <!-- <a href="#"><img src="/img/mercedes.jpg"></a> -->
+                  </div>
+
+                  <a class="item item-icon-left dark " href="#">
+                    <!-- <i class="icon ion-model-s"></i> -->
+                    <i class="icon ion-loading-c"></i>
+                    Start Modding!
+                  </a>
+
+                </div>
+                <!-- card list end -->
+                
+
             </ion-list>
           </ion-content>
         </ion-side-menu-content>
@@ -79,7 +209,7 @@
 
             <!-- Modal header bar -->
             <ion-header-bar class="bar-secondary">
-              <h1 class="title">New Task</h1>
+              <h1 class="title">{{brandName}}</h1>
               <button class="button button-clear button-positive" ng-click="closeNewTask()">Cancel</button>
             </ion-header-bar>
 
@@ -93,18 +223,39 @@
                   </label>
                 </div>
                 <div class="padding">
-                  <button type="submit" class="button button-block button-positive">Create Task</button>
+                  <!--<button type="submit" class="button button-block button-positive">Create Task</button>-->
                 </div>
+
+                  <!-- list of models for each car model -->
+                  <div class="list">
+                      <a class="item item-avatar" ng-click="showMakerTitle('BMW')" >
+                        <img src="/img/BMWGIF.gif">
+                        <h2>BMW M3</h2>
+                        <p>2003-2014</p>
+                      </a>
+                  </div>
+
+                   <list>
+                   <link-item ng-repeat="room in rooms | orderBy:'id':true | limitTo:30 |  orderBy:distanceFromHere: false" type="item-text-wrap" ng-click="goToIt('#/rooms/{{room.id}}');" style="z-index:50000" ng-controller="MainCtrl">
+                      --> 
+                      <link-item ng-repeat="room in rooms | orderBy:'id':true | limitTo:30 | orderBy:distanceFromHere: false" type="item-text-wrap" ng-click="goToIt('#/rooms/{{room.id}}');" style="z-index:50000" ng-controller="MainCtrl" ng-hide="{{distanceFromHere(room) > radius}}" ng-class="{'roomhot': roomHotness(room), 'roompopular': roomPopularity(room)}"> <!--
+                      <h3>{{room.title}}</h3>
+                      <p style="margin-left:10px;">{{actualDistanceFromHere(room)}} mi. ~ {{room.description}}</p>
+                                -->
+                      <h3>{{room.title}} ({{actualDistanceFromHere(room)}} mi.)</h3>
+                      <p style="font-size:0.8rem;">{{room.description}}</p>
+                      <p style="margin-left:10px; font-style:italic; text-align:right;">{{lastMessageAdded(room)}}</p>
+                    </link-item>
+                    </list>
+                  
+
               </form>
 
             </ion-content>
 
           </div>
-
         </script>
 
-
-      </body>
     </body>
   </body>
 </html>
