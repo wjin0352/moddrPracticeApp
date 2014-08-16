@@ -1,3 +1,5 @@
+var globManuScope;
+var allCars={};
 // Ionic Starter App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
@@ -55,9 +57,9 @@ angular.module('todo', ['ionic'])
     $scope.taskModal.show();
   };
 
- // $scope.showMakerTitle = function() {
-   // $scope.taskModal.show();
-  //};
+  $scope.showMakerTitle = function() {
+    $scope.taskModal.show();
+  };
 
   // Close the new task modal
   $scope.closeNewTask = function() {
@@ -167,14 +169,20 @@ angular.module('todo', ['ionic'])
 
   //on clickevent for maker, shows model list in new window
   $scope.showModelInfo = function(type) {
+
+    theCars = allCars['carModels'+type];
+
+
+    globManuScope.currentCar = theCars;
+    console.log(globManuScope.currentCar)
    $scope.brandName= type;
     $scope.taskModal.show();
   };
 
-  //$scope.showMakerTitle = function(type) {
-   // $scope.brandModel= type;
-   // $scope.taskModal.show();
-  //};
+  $scope.showMakerTitle = function(type) {
+    $scope.brandModel= type;
+    $scope.taskModal.show();
+  };
 
   $scope.closeNewTask = function() {
     $scope.taskModal.hide();
@@ -183,6 +191,7 @@ angular.module('todo', ['ionic'])
   $scope.toggleProjects = function() {
     $ionicSideMenuDelegate.toggleLeft();
   };
+
 
 
   // Try to create the first project, make sure to defer
@@ -198,10 +207,81 @@ angular.module('todo', ['ionic'])
         }
       }
     }
-  });
+  })
+
+
+globManuScope = $scope;
+ allCars = 
+          {
+            carModelsAcura:
+                [{title:'Acura', image:'/img/BMWGIF.gif'}, {title:'TSX', image:'/'}],
+
+            carModelsAudi:
+                [{title:'A3', image:'/img/BMWGIF.gif'}],
+
+            carModelsBMW:
+                [{title:'BMW 3 series', image:'/img/BMWGIF.gif'}],
+
+            carModelsCadillac:
+                [{title:'CTS', image:'/img/BMWGIF.gif'}],
+
+            carModelsChevrolet:
+                [{title:'Cobalt', image:'/img/BMWGIF.gif'}],
+
+            carModelsDodge:
+                [{title:'Challenger', image:'/img/BMWGIF.gif'},{title:'Charger', image:'/img/BMWGIF.gif'}],
+
+            carModelsFord:
+                [{title:'Focus', image:'/img/BMWGIF.gif'}],
+
+            carModelsHonda:
+                [{title:'Civic', image:'/img/BMWGIF.gif'}],
+
+            carModelsInfiniti:
+                [{title:'G35', image:'/img/BMWGIF.gif'}],
+
+            carModelsJeep:
+                [{title:'Liberty', image:'/img/BMWGIF.gif'}],
+
+            carModelsLexus:
+                [{title:'IS300', image:'/img/BMWGIF.gif'}],
+
+            carModelsMercedesBenz:
+                [{title:'C Class', image:'/img/BMWGIF.gif'},{title:'E Class', image:'/img/BMWGIF.gif'}],
+
+            carModelsMitsubishi:
+                [{title:'Lancer Evolution', image:'/img/BMWGIF.gif'}],
+
+            carModelsNissan:
+                [{title:'350z', image:'/img/BMWGIF.gif'},{title:'370z', image:'/img/BMWGIF.gif'}],
+
+            carModelsPorsche:
+                [{title:'911 Turbo', image:'/img/BMWGIF.gif'}],
+
+            carModelsSubaru:
+                [{title:'WRX', image:'/img/BMWGIF.gif'},{title:'WRX STI', image:'/img/BMWGIF.gif'}, {title:'Forester', image:'/img/BMWGIF.gif'}],
+
+            carModelsVolkswagon:
+                [{title:'GTI', image:'/img/BMWGIF.gif'}],
+
+            carModelsVolvo:
+                [{title:'S60', image:'/img/BMWGIF.gif'}],
+          };
 
 
 
+$scope.carModelsBmw = allCars.carModelsBMW;
+$scope.carModelsAcura = allCars.carModelsAcura;
+$scope.carModelsAudi = allCars.carModelsAudi;
 
 
 });
+
+
+
+
+
+
+
+
+

@@ -15,15 +15,7 @@
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 
   </head>
-  <body>
-    
-      
-      <ion-side-menus>
-        <ion-side-menu-content>
-        </ion-side-menu-content>
-        <ion-side-menu side="left">
-        </ion-side-menu>
-      </ion-side-menus>
+  
       <body ng-app="todo" ng-controller="TodoCtrl">
         <ion-side-menus>
 
@@ -52,9 +44,7 @@
                   <div class="item item-avatar">
                     <!-- <img src="avatar.jpg"> -->
                     <h2 id="main-title">Choose your car maker below</h2>
-                      <!--<button class="button button-outline button-positive">
-                        i'm a button damn it!
-                      </button> -->
+                      
                   </div>
 
                   <div class="item item-image" >
@@ -123,8 +113,9 @@
 
                       <ion-slide>
                         <div class="box yellow" ng-click="showModelInfo('Subaru')"><img src="/img/subaruicon.jpg"></div>
-                          
-                          <!-- if you want header, text, and footer after card 
+                      </ion-slide>
+
+                      <!-- if you want header, text, and footer after card 
                           <div class="card">
                             <div class="item item-divider">
                               title
@@ -137,9 +128,8 @@
                             </div>
                           </div>-->
 
-                      <!-- code below is redundant as hell any fixes? and how to make it slide smoothly, & how to make it return to the 1st after you slide the last icon picture-->
+                      <!-- code below is redundant as hell any fixes? & how to make it return to the 1st after you slide the last icon picture-->
 
-                      </ion-slide>
 
                       <ion-slide>
                         <div class="box blue" ng-click="showModelInfo('Volkswagon')"><img src="/img/volkswagon.jpg"></div>
@@ -152,13 +142,7 @@
                       <ion-slide>
                         <div class="box pink" ng-click="showModelInfo('')"><img src="/img/HIGHWAYOSCARMIKE.gif">
                         </div>
-                      </ion-slide>                 
-
-                                                                              
-                      
-
-                    </ion-slide-box>
-                    <!-- <a href="#"><img src="/img/mercedes.jpg"></a> -->
+                      </ion-slide>                                                                                                                  
                   </div>
 
                   <a class="item item-icon-left dark " href="#">
@@ -183,6 +167,7 @@
                 </ion-item>
               </ion-list>
           </ion-content>
+          
         </ion-side-menu-content>
 
           <!-- Left menu -->
@@ -200,7 +185,7 @@
               </ion-list>
             </ion-content>
           </ion-side-menu>
-        </ion-side-menu>
+        
 
 
         <script id="new-task.html" type="text/ng-template">
@@ -228,27 +213,15 @@
 
                   <!-- list of models for each car model -->
                   
-                  <div class="list">
-                      <a class="item item-thumbnail-left" ng-click="showMakerTitle('BMW')" >
-                        <img src="/img/BMWGIF.gif">
-                        <h2>BMW M3</h2>
+                  <div class="list" id="caro" ng-repeat="car in currentCar">
+                      <a class="item item-thumbnail-left" ng-click="showMakerTitle('{{car.title}}')" >
+                        <img ng-src="{{car.image}}" >
+                        <h2>{{car.title}}</h2>
                         <p>2003-2014</p>
                       </a>
                   </div>
                   
 
-                   <list>
-                   <link-item ng-repeat="room in rooms | orderBy:'id':true | limitTo:30 |  orderBy:distanceFromHere: false" type="item-text-wrap" ng-click="goToIt('#/rooms/{{room.id}}');" style="z-index:50000" ng-controller="MainCtrl">
-                      --> 
-                      <link-item ng-repeat="room in rooms | orderBy:'id':true | limitTo:30 | orderBy:distanceFromHere: false" type="item-text-wrap" ng-click="goToIt('#/rooms/{{room.id}}');" style="z-index:50000" ng-controller="MainCtrl" ng-hide="{{distanceFromHere(room) > radius}}" ng-class="{'roomhot': roomHotness(room), 'roompopular': roomPopularity(room)}"> <!--
-                      <h3>{{room.title}}</h3>
-                      <p style="margin-left:10px;">{{actualDistanceFromHere(room)}} mi. ~ {{room.description}}</p>
-                                -->
-                      <h3>{{room.title}} ({{actualDistanceFromHere(room)}} mi.)</h3>
-                      <p style="font-size:0.8rem;">{{room.description}}</p>
-                      <p style="margin-left:10px; font-style:italic; text-align:right;">{{lastMessageAdded(room)}}</p>
-                    </link-item>
-                    </list>
                   
 
               </form>
@@ -258,7 +231,7 @@
           </div>
         </script>
 
-    </body>
+    
   </body>
 </html>
 
