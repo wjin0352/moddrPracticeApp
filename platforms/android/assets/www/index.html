@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content= "initial-scale=1, maxium-scale=1, user-scalable=no, width=device-width">
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    
+    <!-- Needed for Cordova/PhoneGap (will be a 404 during development) -->
+    <script src="cordova.js"></script>
+    <script src="angular.js"></script>
+    <script src="angular-touch.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script>
+  </head>
+  
+      <body ng-app="todo" ng-controller="TodoCtrl" class="platform-android platform-cordova platform-webview">
+        <ion-side-menus>
+
+        <!-- Center content -->
+        <ion-side-menu-content>
+          <ion-header-bar class="bar-dark">
+            <!--<button class="button button-icon" ng-click="toggleProjects()">
+              <i class="icon ion-navicon"></i>
+            </button>-->
+            <h1 class="title">{{activeProject.title}}</h1>
+            <!-- New Task Button -->
+            <!--<button class="button button-icon" ng-click="newTask()">
+              <i class="icon ion-compose"></i>
+            </button>-->
+          </ion-header-bar>
+          <ion-content scroll="false">
+            <ion-list>
+              <ion-item ng-repeat="task in activeProject.tasks">
+                {{task.title}}
+              </ion-item>
+
+
+                <!-- card list -->
+                <div class="list card">
+
+                  <div class="item item-avatar">
+                    <!-- <img src="avatar.jpg"> -->
+                    <h2 id="main-title">Choose your car maker below</h2>
+                      
+                  </div>
+
+                  <div class="item item-image" >
+                    <ion-slide-box on-slide-changed="slideHasChanged($index)">
+                      
+                      <ion-slide>
+                        <div class="box blue" ng-click="showModelInfo('Acura')"><img src="img/acura.jpg"></div>
+                      </ion-slide>
+
+                      <ion-slide>
+                        <div class="box blue" ng-click="showModelInfo('Audi')"><img src="img/audi.jpg"></div>
+                      </ion-slide>
+
+                      <ion-slide>
+                        <div class="box blue" ng-click="showModelInfo('BMW')"><img src="img/bmwicon.gif"></div>
+                      </ion-slide>
+
+                      <ion-slide>
+                        <div class="box blue" ng-click="showModelInfo('Cadillac')"><img src="img/cadillacblack.png"></div>
+                      </ion-slide>
+
+                      <ion-slide>
+                        <div class="box blue" ng-click="showModelInfo('Chevrolet')"><img src="img/chevy.jpg"></div>
+                      </ion-slide>
+
+                      <ion-slide>
+                        <div class="box blue" ng-click="showModelInfo('Dodge')"><img src="img/dodge.gif"></div>
+                      </ion-slide>
+
+                      <ion-slide>
+                        <div class="box blue" ng-click="showModelInfo('Ford')"><img src="img/ford.jpg"></div>
+                      </ion-slide>
+
+                      <ion-slide>
+                        <div class="box blue" ng-click="showModelInfo('Honda')"><img src="img/honda.jpg"></div>
+                      </ion-slide>
+
+                      <ion-slide>
+                        <div class="box blue" ng-click="showModelInfo('Infiniti')"><img src="img/infiniti.jpg"></div>
+                      </ion-slide>
+
+                      <ion-slide>
+                        <div class="box blue" ng-click="showModelInfo('Jeep')"><img src="img/jeep.jpg"></div>
+                      </ion-slide>
+
+                      <ion-slide>
+                        <div class="box blue" ng-click="showModelInfo('Lexus')"><img src="img/lexus.jpg"></div>
+                      </ion-slide>
+
+                      <ion-slide>
+                        <div class="box pink" ng-click="showModelInfo('MercedesBenz')"><img src="img/mercedes.jpg">
+                        </div>
+                      </ion-slide>
+
+                      <ion-slide>
+                        <div class="box blue" ng-click="showModelInfo('Mitsubishi')"><img src="img/mitsu.jpg"></div>
+                      </ion-slide>
+
+                      <ion-slide>
+                        <div class="box blue" ng-click="showModelInfo('Nissan')"><img src="img/nissan.jpg"></div>
+                      </ion-slide>
+
+                      <ion-slide>
+                        <div class="box blue" ng-click="showModelInfo('Porsche')"><img src="img/porsche.jpg"></div>
+                      </ion-slide>
+
+                      <ion-slide>
+                        <div class="box yellow" ng-click="showModelInfo('Subaru')"><img src="img/subaruicon.jpg"></div>
+                      </ion-slide>
+
+                      <!-- if you want header, text, and footer after card 
+                          <div class="card">
+                            <div class="item item-divider">
+                              title
+                            </div>
+                            <div class="item item-text-wrap">
+                              This is a basic Card with some text.
+                            </div>
+                            <div class="item item-divider">
+                              I'm a Footer in a Card!
+                            </div>
+                          </div>-->
+
+                     
+
+                      <ion-slide>
+                        <div class="box blue" ng-click="showModelInfo('Volkswagon')"><img src="img/volkswagon.jpg"></div>
+                      </ion-slide>
+
+                      <ion-slide>
+                        <div class="box pink" ng-click="showModelInfo('Volvo')"><img src="img/volvo.jpg"></div>
+                      </ion-slide>                    
+
+                      <ion-slide>
+                        <div class="box pink" ng-click="showModelInfo('')"><img src="img/HIGHWAYOSCARMIKE.gif">
+                        </div>
+                      </ion-slide>     
+
+                       <!-- code above is redundant as hell any fixes? & how to make it return to the 1st after you slide the last icon picture-->
+                                                                                                             
+                  </div>
+
+                  <a class="item item-icon-left dark " href="#">
+                    <!-- <i class="icon ion-model-s"></i> -->
+                    <i class="icon ion-loading-c"></i>
+                    Start Modding!
+                  </a>
+
+                </div>
+                <!-- card list end -->
+                
+
+            </ion-list>
+          </ion-content>
+        </ion-side-menu-content>
+
+            <ion-content>
+            <!-- our list and list items -->
+              <ion-list>
+                <ion-item ng-repeat="task in tasks">
+                  {{task.title}}
+                </ion-item>
+              </ion-list>
+          </ion-content>
+
+        </ion-side-menu-content>
+
+          <!-- Left menu -->
+          <ion-side-menu side="left">
+            <ion-header-bar class="bar-dark">
+              <h1 class="title">Projects</h1>
+              <!--<button class="button button-icon ion-plus" ng-click="newProject()">
+              </button>-->
+            </ion-header-bar>
+            <ion-content scroll="false">
+              <ion-list>
+                <ion-item ng-repeat="project in projects" ng-click="selectProject(project, $index)" ng-class="{active: activeProject==project}">
+                  {{project.title}}
+                </ion-item>
+              </ion-list>
+            </ion-content>
+          </ion-side-menu>
+        
+
+
+        <script id="new-task.html" type="text/ng-template">
+
+          <div class="modal">
+          <ion-modal-view>
+
+            <!-- Modal header bar -->
+            <ion-header-bar class="bar-secondary">
+              <h1 class="title">{{brandName}}</h1>
+              <button class="button button-clear button-positive" ng-click="closeNewTask()">Cancel</button>
+            </ion-header-bar>
+
+            <!-- Modal content area -->
+            <ion-content>
+              
+                  <!-- list of models for each car maker -->
+                  <ion-list>
+                  <ion-item class="list" id="caro" ng-repeat="car in currentCar" ng-click="showCarVids(car.title)">
+                      <a class="item item-thumbnail-left carImg" title = "{{car.title}}" href="javascript:fuckyeah()" videos={{car.videos}} >
+                        <img ng-src="{{car.image}}" >
+                        <h2>{{car.title}}</h2>
+                        <p>{{car.year}}</p>
+                      </a>
+                  </ion-button>
+                  </ion-list>
+                  
+
+                  
+
+              </form>
+
+            </ion-content>
+
+            </ion-modal-view>
+
+          </div>
+        </script>
+
+    
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
