@@ -27,11 +27,6 @@ function fuckyeah(){
       startStr+='<br><iframe width="100%" height="315" src="http://www.youtube.com/embed/'+allVids[i]+'" frameborder="0" allowfullscreen></iframe><br>';
     }
 
-
-
-
-
-
   } 
 
   else{
@@ -41,7 +36,6 @@ function fuckyeah(){
 
   r= $('<div />').addClass('activeVids').css({'width':'100%', 'height':'auto', 'background-color':'white'}).html(startStr);
     $(this).append(r);
-
 
   })
 }
